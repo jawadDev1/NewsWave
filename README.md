@@ -1,7 +1,7 @@
 # NewsWave a news app built with react native
 [Dowload Apk](https://drive.google.com/file/d/1a3NT-36GTeoHEVbyFd_PHeplAg2Hx5HB/view?usp=drive_link)
 
-![Watch Video](NewsWave.mp4)
+![Watch Video](https://youtube.com/shorts/qrEVlyIYD9E?si=bv8a1BG3O4NG2aQY)
 
 
 
