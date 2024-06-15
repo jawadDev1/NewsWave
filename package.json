@@ -23,6 +23,7 @@
     "react-native-screens": "^3.29.0",
     "react-native-snackbar": "^2.6.2",
     "react-native-vector-icons": "^10.0.3",
+    "react-native-webview": "^13.10.3",
     "yarn": "^1.22.21"
   },
   "devDependencies": {

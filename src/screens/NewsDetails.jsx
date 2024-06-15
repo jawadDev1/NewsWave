@@ -1,7 +1,8 @@
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React, {useEffect} from 'react';
 
-const NewsDetails = ({route}) => {
+
+const NewsDetails = ({route, navigation}) => {
   const item = route.params?.item;
 
   useEffect(() => {}, [route?.params]);
@@ -18,8 +19,15 @@ const NewsDetails = ({route}) => {
       />
       <Text style={styles.title}>{item.title}</Text>
       <Text style={styles.description}>{item.description}</Text>
+
+      <TouchableOpacity onPress={() => navigation.navigate('ReadMore', {url: item.url})} style={styles.btn}>
+        <Text style={styles.btnText}>Read more ...</Text>
+        
+      </TouchableOpacity>
     </View>
   );
+
+ 
 };
 
 const styles = StyleSheet.create({
@@ -45,6 +53,18 @@ const styles = StyleSheet.create({
     fontFamily: 'Roboto-Regular',
     fontWeight: '500',
   },
+  btn: {
+    backgroundColor: 'red',
+    paddingVertical: 12,
+    paddingHorizontal: 18,
+    width: '40%',
+    marginTop: 19,
+  },
+  btnText: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: '500'
+  }
 });
 
 export default NewsDetails;
