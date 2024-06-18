@@ -1,7 +1,6 @@
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React, {useEffect} from 'react';
 
-
 const NewsDetails = ({route, navigation}) => {
   const item = route.params?.item;
 
@@ -20,21 +19,22 @@ const NewsDetails = ({route, navigation}) => {
       <Text style={styles.title}>{item.title}</Text>
       <Text style={styles.description}>{item.description}</Text>
 
-      <TouchableOpacity onPress={() => navigation.navigate('ReadMore', {url: item.url})} style={styles.btn}>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('ReadMore', {url: item.url})}
+        style={styles.btn}
+        activeOpacity={0.8}
+        >
         <Text style={styles.btnText}>Read more ...</Text>
-        
       </TouchableOpacity>
     </View>
   );
-
- 
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#111111',
-    paddingHorizontal: 8,
+    paddingHorizontal: 18,
     paddingVertical: 15,
   },
   img: {
@@ -57,14 +57,14 @@ const styles = StyleSheet.create({
     backgroundColor: 'red',
     paddingVertical: 12,
     paddingHorizontal: 18,
-    width: '40%',
+    width: '60%',
     marginTop: 19,
   },
   btnText: {
     color: '#fff',
     fontSize: 18,
-    fontWeight: '500'
-  }
+    fontWeight: '500',
+  },
 });
 
 export default NewsDetails;

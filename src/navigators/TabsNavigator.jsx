@@ -39,7 +39,7 @@ const TabsNavigator = () => {
           }}
           initialRouteName='Home'
           >
-          <Tab.Screen
+          {/* <Tab.Screen
             name="Home"
             component={Home}
             options={{
@@ -55,7 +55,7 @@ const TabsNavigator = () => {
               headerTitleAlign: 'center',
               tabBarButton: props => <TabButton {...props} item={homeTab} />,
             }}
-          />
+          /> */}
           {TabArray.map((item, index) => (
             <Tab.Screen
               key={index}
