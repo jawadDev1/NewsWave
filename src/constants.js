@@ -1,12 +1,13 @@
 // Screens
-import CountryStack from './screens/CountryStack';
-import CategoryStack from './screens/CategoryStack';
-import SearchStack from './screens/SearchStack';
+
+import Search from './screens/Search';
+import ExploreCountry from './screens/ExploreCountry';
+import ExploreCategory from './screens/ExploreCategory';
 
 export const TabArray = [
     {
-      route: 'CountryStack',
-      component: CountryStack,
+      route: 'ExploreCountry',
+      component: ExploreCountry,
       label: 'Country',
       activeIcon: 'globe',
       inActiveIcon: 'globe-outline',
@@ -14,8 +15,8 @@ export const TabArray = [
       alphaColor: '#fa0808',
     },
     {
-      route: 'CategoryStack',
-      component: CategoryStack,
+      route: 'ExploreCategory',
+      component: ExploreCategory,
       label: 'Category',
       activeIcon: 'list',
       inActiveIcon: 'list-outline',
@@ -23,8 +24,8 @@ export const TabArray = [
       alphaColor: '#fa0808',
     },
     {
-      route: 'SearchStack',
-      component: SearchStack,
+      route: 'Search',
+      component: Search,
       label: 'Search',
       activeIcon: 'search',
       inActiveIcon: 'search-outline',

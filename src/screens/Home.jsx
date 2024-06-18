@@ -26,22 +26,31 @@ const Home = ({navigation}) => {
       <SafeAreaView style={styles.container}>
         <Text style={styles.heading}>Top Headlines</Text>
         <View style={styles.subContainer}>
-          <FlatList
-            numColumns={2}
-            data={articals}
-            ItemSeparatorComponent={Separator}
-            keyExtractor={(item, index) => index.toString()}
-            renderItem={({item}) => (
-              <Pressable
-                onPress={() => navigation.navigate('NewsDetails', {item})}
-                style={styles.card}>
-                <NewsCard item={item} style={styles.item} />
-              </Pressable>
-            )}
-            showsVerticalScrollIndicator={false}
-            onEndReachedThreshold={0.2}
-            onEndReached={() => setPage(page + 1)}
-          />
+          {articals.length == 0 ? (
+            <Text style={styles.text}>
+              {' '}
+              {pending
+                ? ''
+                : 'No aritcals to show (check your internet connection)'}{' '}
+            </Text>
+          ) : (
+            <FlatList
+              numColumns={2}
+              data={articals}
+              ItemSeparatorComponent={Separator}
+              keyExtractor={(item, index) => index.toString()}
+              renderItem={({item}) => (
+                <Pressable
+                  onPress={() => navigation.navigate('NewsDetails', {item})}
+                  style={styles.card}>
+                  <NewsCard item={item} style={styles.item} />
+                </Pressable>
+              )}
+              showsVerticalScrollIndicator={false}
+              onEndReachedThreshold={0.2}
+              onEndReached={() => setPage(page + 1)}
+            />
+          )}
           {pending && <Loader />}
         </View>
       </SafeAreaView>
@@ -67,5 +76,10 @@ const styles = StyleSheet.create({
   },
   card: {
     flex: 1,
+  },
+  text: {
+    fontSize: 13,
+    textAlign: 'center',
+    color: 'gray',
   },
 });

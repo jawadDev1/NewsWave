@@ -23,22 +23,28 @@ const ListNews = ({route, navigation}) => {
   return (
     <View style={styles.container}>
       <View style={styles.subContainer}>
-        <FlatList
-          numColumns={2}
-          data={listArticals}
-          ItemSeparatorComponent={Separator}
-          keyExtractor={(item, index) => index.toString()}
-          renderItem={({item}) => (
-            <Pressable
-              onPress={() => navigation.navigate('NewsDetails', {item})}
-              style={styles.card}>
-              <NewsCard item={item} style={styles.item} />
-            </Pressable>
-          )}
-          showsVerticalScrollIndicator={false}
-          onEndReachedThreshold={0.2}
-          onEndReached={() => setPage(page + 1)}
-        />
+        {listArticals.length == 0 ? (
+          <Text style={styles.text}>
+            No aritcals to show (check your internet connection)
+          </Text>
+        ) : (
+          <FlatList
+            numColumns={2}
+            data={listArticals}
+            ItemSeparatorComponent={Separator}
+            keyExtractor={(item, index) => index.toString()}
+            renderItem={({item}) => (
+              <Pressable
+                onPress={() => navigation.navigate('NewsDetails', {item})}
+                style={styles.card}>
+                <NewsCard item={item} style={styles.item} />
+              </Pressable>
+            )}
+            showsVerticalScrollIndicator={false}
+            onEndReachedThreshold={0.2}
+            onEndReached={() => setPage(page + 1)}
+          />
+        )}
       </View>
       {pending && <Loader />}
     </View>
@@ -59,5 +65,10 @@ const styles = StyleSheet.create({
   },
   card: {
     flex: 1,
+  },
+  text: {
+    fontSize: 13,
+    textAlign: 'center',
+    color: 'gray',
   },
 });

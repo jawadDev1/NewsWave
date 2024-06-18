@@ -1,10 +1,4 @@
-import {
-  FlatList,
-  Pressable,
-  StyleSheet,
-  TextInput,
-  View,
-} from 'react-native';
+import {FlatList, Pressable, StyleSheet, Text, TextInput, View} from 'react-native';
 import React, {useContext, useEffect, useState} from 'react';
 import Icons from 'react-native-vector-icons/Ionicons';
 import Separator from '../components/Separator';
@@ -45,22 +39,28 @@ const Search = ({navigation}) => {
         </Pressable>
       </View>
       <View style={styles.newsContainer}>
-        <FlatList
-          numColumns={2}
-          data={searchArticals}
-          ItemSeparatorComponent={Separator}
-          keyExtractor={(item, index) => index.toString()}
-          renderItem={({item}) => (
-            <Pressable
-              onPress={() => navigation.navigate('NewsDetails', {item})}
-              style={styles.card}>
-              <NewsCard item={item} style={styles.item} />
-            </Pressable>
-          )}
-          showsVerticalScrollIndicator={false}
-          onEndReachedThreshold={0.2}
-          onEndReached={() => setPage(page + 1)}
-        />
+        {searchArticals.length == 0 ? (
+          <Text style={styles.text}>
+            No articals to show
+          </Text>
+        ) : (
+          <FlatList
+            numColumns={2}
+            data={searchArticals}
+            ItemSeparatorComponent={Separator}
+            keyExtractor={(item, index) => index.toString()}
+            renderItem={({item}) => (
+              <Pressable
+                onPress={() => navigation.navigate('NewsDetails', {item})}
+                style={styles.card}>
+                <NewsCard item={item} style={styles.item} />
+              </Pressable>
+            )}
+            showsVerticalScrollIndicator={false}
+            onEndReachedThreshold={0.2}
+            onEndReached={() => setPage(page + 1)}
+          />
+        )}
         {pending && <Loader />}
       </View>
     </View>
@@ -104,5 +104,10 @@ const styles = StyleSheet.create({
   },
   card: {
     flex: 1,
+  },
+  text: {
+    fontSize: 13,
+    textAlign: 'center',
+    color: 'gray',
   },
 });

@@ -19,10 +19,18 @@ const NewsState = ({children}) => {
       const data = await res.json();
       let {articles} = data;
 
-      if (articles) {
+      if (articals == undefined) {
+        Snackbar.show({
+          text: 'Check your internet connection!',
+          backgroundColor: 'red',
+          duration: Snackbar.LENGTH_SHORT,
+        });
         setPending(false);
-        return articles;
+        return;
       }
+
+      setPending(false);
+      return articles;
     } catch (error) {
       Snackbar.show({
         text: 'Some error occured',
@@ -39,7 +47,10 @@ const NewsState = ({children}) => {
     let result = await getArticals(
       `https://newsapi.org/v2/top-headlines?country=us&apiKey=${NEWS_API_KEY}&page=${page}&pageSize=15`,
     );
-    setArticals(prevArticals => [...prevArticals, ...result]);
+
+    if (result) {
+      setArticals(prevArticals => [...prevArticals, ...result]);
+    }
   };
 
   // Get Country News
@@ -50,7 +61,9 @@ const NewsState = ({children}) => {
     let result = await getArticals(
       `https://newsapi.org/v2/top-headlines?country=${countryCode}&apiKey=${NEWS_API_KEY}&page=${page}&pageSize=15`,
     );
-    setListArticals(prevArticals => [...prevArticals, ...result]);
+    if (result) {
+      setListArticals(prevArticals => [...prevArticals, ...result]);
+    }
   };
 
   // Get Category News
@@ -61,8 +74,9 @@ const NewsState = ({children}) => {
     let result = await getArticals(
       `https://newsapi.org/v2/top-headlines?category=${categoryCode}&apiKey=${NEWS_API_KEY}&page=${page}&pageSize=15`,
     );
-
-    setListArticals(prevArticals => [...prevArticals, ...result]);
+    if (result) {
+      setListArticals(prevArticals => [...prevArticals, ...result]);
+    }
   };
 
   // Search any News
@@ -74,7 +88,9 @@ const NewsState = ({children}) => {
     let result = await getArticals(
       `https://newsapi.org/v2/everything?q=${searchQuery}&apiKey=${NEWS_API_KEY}&page=${page}&pageSize=15`,
     );
-    setSearchArticals(prevArticals => [...prevArticals, ...result]);
+    if (result) {
+      setSearchArticals(prevArticals => [...prevArticals, ...result]);
+    }
   };
 
   useEffect(() => {
