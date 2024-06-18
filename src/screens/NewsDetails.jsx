@@ -22,8 +22,7 @@ const NewsDetails = ({route, navigation}) => {
       <TouchableOpacity
         onPress={() => navigation.navigate('ReadMore', {url: item.url})}
         style={styles.btn}
-        activeOpacity={0.8}
-        >
+        activeOpacity={0.8}>
         <Text style={styles.btnText}>Read more ...</Text>
       </TouchableOpacity>
     </View>
