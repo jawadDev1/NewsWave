@@ -25,7 +25,7 @@ const ListNews = ({route, navigation}) => {
       <View style={styles.subContainer}>
         {listArticals.length == 0 ? (
           <Text style={styles.text}>
-            No aritcals to show (check your internet connection)
+            { pending? '': 'No aritcals to show (check your internet connection)'}
           </Text>
         ) : (
           <FlatList
